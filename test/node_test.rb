@@ -11,9 +11,7 @@ class NodeTest < MiniTest::Test
   end
 
   def test_test_instance_variables
-    assert "plop", @node.data
+    assert_equal "plop", @node.data
     refute @node.next_node
   end
-  
-
 end

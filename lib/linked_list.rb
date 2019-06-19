@@ -10,12 +10,24 @@ class LinkedList
   def append(string)
     if @head.nil?
       @head = Node.new(string)
+    else
+      node = @head
+      until node.next_node.nil? do
+          node = node.next_node
+      end
+      node.next_node = Node.new(string)
     end
   end
 
   def count
     if @head
-      return 1
+      node = @head
+      i = 0
+      until node.nil? do
+          node = node.next_node
+          i += 1
+      end
+      return i
     else
       return 0
     end
@@ -23,7 +35,13 @@ class LinkedList
 
   def to_string
     if @head
-      @head.data
+      node = @head
+      string = ''
+      until node.nil? do
+          string << node.data + " "
+          node = node.next_node
+      end
+      return string.strip
     end
   end
 end

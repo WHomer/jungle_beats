@@ -18,8 +18,17 @@ class LinkedListTest < MiniTest::Test
     node = @link_list.append("doop")
     assert_instance_of Node, node
     refute @link_list.head.next_node
-    assert 1, @link_list.count
-    assert "doop", @link_list.to_string
+    assert_equal 1, @link_list.count
+    assert_equal "doop", @link_list.to_string
+  end
+
+  def test_append_second_node
+    first_node = @link_list.append("doop")
+    second_node = @link_list.append("deep")
+
+    assert_equal second_node, @link_list.head.next_node
+    assert_equal 2, @link_list.count
+    assert_equal "doop deep", @link_list.to_string
   end
 
 end
