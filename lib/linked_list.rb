@@ -44,4 +44,28 @@ class LinkedList
       return string.strip
     end
   end
+
+  def prepend(string)
+    if @head
+      current_first = @head
+      @head = Node.new(string)
+      @head.next_node = current_first
+      @head
+    else
+      @head = Node.new(string)
+    end
+  end
+
+  def insert(pos, string)
+    new_node = Node.new(string)
+    node = @head
+    i = 1
+    until i == pos || node.nil? do
+      node = node.next_node
+      i += 1
+    end
+    current_node = node
+    new_node.next_node = current_node.next_node
+    node.next_node = new_node
+  end
 end

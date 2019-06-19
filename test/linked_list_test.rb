@@ -31,4 +31,23 @@ class LinkedListTest < MiniTest::Test
     assert_equal "doop deep", @link_list.to_string
   end
 
+  def test_prepend_method
+    node_a = @link_list.append("plop")
+    node_b = @link_list.append("suu")
+    node_c = @link_list.prepend("dop")
+
+    assert_equal "dop", node_c.data
+    assert_equal "dop plop suu", @link_list.to_string
+    assert_equal 3, @link_list.count
+  end
+
+  def test_insert_method
+    node_a = @link_list.append("plop")
+    node_b = @link_list.append("suu")
+    node_c = @link_list.prepend("dop")
+    node_d = @link_list.insert(1, "woo")
+
+    assert_equal "woo", node_d.data
+    assert_equal "dop woo plop suu", @link_list.to_string
+  end
 end
