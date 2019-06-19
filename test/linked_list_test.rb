@@ -50,4 +50,38 @@ class LinkedListTest < MiniTest::Test
     assert_equal "woo", node_d.data
     assert_equal "dop woo plop suu", @link_list.to_string
   end
+
+  def test_find_method
+    node_a = @link_list.append("deep")
+    node_b = @link_list.append("woo")
+    node_c = @link_list.append("shi")
+    node_d = @link_list.append("shu")
+    node_e = @link_list.append("blop")
+
+    assert_equal 'shi', @link_list.find(2,1)
+    assert_equal 'woo shi shu', @link_list.find(1,3)
+  end
+
+  def test_includes_method
+    node_a = @link_list.append("deep")
+    node_b = @link_list.append("woo")
+    node_c = @link_list.append("shi")
+    node_d = @link_list.append("shu")
+    node_e = @link_list.append("blop")
+
+    assert @link_list.includes?('deep')
+    refute @link_list.includes?('dep')
+  end
+
+  def test_pop_method
+    node_a = @link_list.append("deep")
+    node_b = @link_list.append("woo")
+    node_c = @link_list.append("shi")
+    node_d = @link_list.append("shu")
+    node_e = @link_list.append("blop")
+
+    assert_equal 'blop', @link_list.pop
+    assert_equal 'shu', @link_list.pop
+    assert_equal 'deep woo shi', @link_list.to_string
+  end
 end

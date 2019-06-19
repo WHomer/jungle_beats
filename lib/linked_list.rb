@@ -68,4 +68,43 @@ class LinkedList
     new_node.next_node = current_node.next_node
     node.next_node = new_node
   end
+
+  def find(node_position, number_of_nodes)
+    node = @head
+    i = 0
+    until i == node_position do
+      node = node.next_node
+      i += 1
+    end
+    i = 0
+    string = ''
+    until i == number_of_nodes do
+      string << node.data + " "
+      node = node.next_node
+      i += 1
+    end
+    return string.strip
+  end
+
+  def includes?(string)
+    node = @head
+    until node.nil? || string == node.data do
+      node = node.next_node
+    end
+    if node
+      string == node.data
+    else
+      false
+    end
+  end
+
+  def pop
+    node = @head
+    until node.next_node.next_node.nil? do
+      node = node.next_node
+    end
+    node_data = node.next_node.data
+    node.next_node = nil
+    node_data
+  end
 end
